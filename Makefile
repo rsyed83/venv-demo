@@ -7,10 +7,10 @@ VENV_ACTIVATE=source $(VENV)/bin/activate
 
 setup: ## Create a virtualenv in the current directory and install dependencies
 	@test -d $(VENV) || virtualenv $(VENV) --no-site-packages
-	@./$(VENV)/bin/pip install -r ./requirements.txt
+	$(VENV_ACTIVATE) && pip install -r ./requirements.txt
 
 clone: ## Execute the clone script
-	@./$(VENV)/bin/python clone.py
+	$(VENV_ACTIVATE) && python clone.py
 
 .PHONY: help
 
